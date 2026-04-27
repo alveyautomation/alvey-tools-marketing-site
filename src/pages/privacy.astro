@@ -1,0 +1,113 @@
+---
+import Default from "../layouts/Default.astro";
+const lastUpdated = "April 26, 2026";
+---
+
+<Default
+  title="Privacy Policy"
+  description="Privacy policy for Alvey Tools — what data we collect, what we don't, and how to reach us."
+>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 prose-tools">
+    <div class="text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold mb-3">
+      Legal
+    </div>
+    <h1 class="font-display text-4xl sm:text-5xl text-ink-100 mb-3">
+      Privacy Policy
+    </h1>
+    <p class="text-ink-400 text-sm mb-10">Last updated: {lastUpdated}</p>
+
+    <p>
+      This privacy policy applies to the products listed at
+      <a href="/" class="text-amber-400 hover:underline">alveyautomation.com/tools</a>
+      and the Alvey Tools sub-brand of Alvey Automation.
+    </p>
+
+    <h2>What this site does</h2>
+    <p>
+      This is a marketing site. It does not require an account, does not run
+      analytics that personally identify you, and does not set advertising
+      cookies. Standard server logs (IP address, user agent, request path,
+      timestamp) may be retained for operational and security purposes for up
+      to 30 days.
+    </p>
+
+    <h2>Per-product data handling</h2>
+    <p>
+      Each product has its own data-handling story. The summary below
+      describes the marketing site only. For per-product specifics, see the
+      product page or the product's documentation.
+    </p>
+
+    <h3>Marketplace apps (QuickBooks, Shopify, Stripe)</h3>
+    <ul>
+      <li>
+        We connect to your account via the marketplace's OAuth flow and
+        store only the tokens necessary to perform the documented function.
+      </li>
+      <li>
+        OAuth tokens are encrypted at rest using Fernet (AES-128) with keys
+        rotated independently of the database backup schedule.
+      </li>
+      <li>
+        We persist only the aggregates needed for alerts (e.g., per-vendor
+        rolling medians, per-SKU velocity numbers, per-recovery state). We
+        do not persist customer PII from your accounts.
+      </li>
+      <li>
+        On cancellation we purge your data within 7 days and confirm by
+        email when purge completes.
+      </li>
+    </ul>
+
+    <h3>Open-source MCP servers</h3>
+    <ul>
+      <li>
+        These run locally on your machine. There is no Alvey-hosted backend.
+        Your credentials never leave your environment.
+      </li>
+      <li>
+        We do not collect telemetry from the MCP servers. The repos contain
+        no analytics or "phone home" hooks.
+      </li>
+    </ul>
+
+    <h3>One-time downloads (methodology pack, security stack, scaffold)</h3>
+    <ul>
+      <li>
+        Purchases are processed by Gumroad, who handles payment data
+        according to their own privacy policy.
+      </li>
+      <li>
+        Email addresses provided at purchase are used solely to deliver the
+        product and notify you of free updates. We do not sell or share your
+        email.
+      </li>
+    </ul>
+
+    <h2>Email contact</h2>
+    <p>
+      If you email us at <code>brett@alveyautomation.com</code> we will retain
+      the conversation for as long as necessary to support you. We do not add
+      you to any marketing list without explicit consent.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      You can request access to, correction of, or deletion of any personal
+      data we hold by emailing <code>brett@alveyautomation.com</code>. We
+      will respond within 14 days.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      We may update this policy as products evolve. The "Last updated" date
+      at the top reflects the most recent revision. Material changes will be
+      announced via product update emails to existing customers.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy: <code>brett@alveyautomation.com</code>.
+    </p>
+  </article>
+</Default>

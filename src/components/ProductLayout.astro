@@ -1,0 +1,100 @@
+---
+import Default from "../layouts/Default.astro";
+import ProductHero from "./ProductHero.astro";
+import FAQ from "./FAQ.astro";
+import BuyButton from "./BuyButton.astro";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  metaTitle: string;
+  metaDescription: string;
+  eyebrow: string;
+  headline: string;
+  subhead: string;
+  pricing: string;
+  ctaLabel: string;
+  ctaHref: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  problemTitle: string;
+  whatYouGetTitle: string;
+  whoForTitle: string;
+  finalCtaTitle: string;
+  finalCtaSubhead: string;
+  comingSoon?: boolean;
+  faq: FAQItem[];
+}
+
+const {
+  metaTitle,
+  metaDescription,
+  eyebrow,
+  headline,
+  subhead,
+  pricing,
+  ctaLabel,
+  ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+  problemTitle,
+  whatYouGetTitle,
+  whoForTitle,
+  finalCtaTitle,
+  finalCtaSubhead,
+  comingSoon = false,
+  faq,
+} = Astro.props;
+---
+
+<Default title={metaTitle} description={metaDescription}>
+  <ProductHero
+    eyebrow={eyebrow}
+    headline={headline}
+    subhead={subhead}
+    pricing={pricing}
+    ctaLabel={ctaLabel}
+    ctaHref={ctaHref}
+    secondaryCtaLabel={secondaryCtaLabel}
+    secondaryCtaHref={secondaryCtaHref}
+    comingSoon={comingSoon}
+  />
+
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 prose-tools">
+    <section>
+      <h2>{problemTitle}</h2>
+      <slot name="problem" />
+    </section>
+
+    <section>
+      <h2>{whatYouGetTitle}</h2>
+      <slot name="what-you-get" />
+    </section>
+
+    <section>
+      <h2>{whoForTitle}</h2>
+      <slot name="who-for" />
+    </section>
+  </article>
+
+  <FAQ items={faq} />
+
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+    <h2 class="font-display text-3xl sm:text-4xl text-ink-100 mb-4">
+      {finalCtaTitle}
+    </h2>
+    <p class="text-ink-300 text-lg mb-8">{finalCtaSubhead}</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <BuyButton href={ctaHref} label={ctaLabel} size="lg" />
+      <BuyButton
+        href="mailto:brett@alveyautomation.com"
+        label="Email a question"
+        variant="secondary"
+        size="lg"
+      />
+    </div>
+  </section>
+</Default>

@@ -1,0 +1,46 @@
+---
+import type { Product } from "../data/products";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+// Products with internal landing pages link to /tools/<slug>; others link
+// straight to their external CTA (Gumroad / GitHub) so the card never 404s.
+const href = product.hasLandingPage === false ? product.ctaHref : `${base}/${product.slug}`;
+const isExternal = product.hasLandingPage === false;
+---
+
+<a
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  class="group flex flex-col h-full p-6 rounded-xl border border-ink-800 bg-ink-900/60 hover:bg-ink-900 hover:border-amber-400/40 transition-all"
+>
+  <div class="flex items-start justify-between gap-3 mb-3">
+    <h3 class="font-display text-xl text-ink-100 group-hover:text-white">
+      {product.name}
+    </h3>
+    {product.status === "coming-soon" && (
+      <span class="shrink-0 text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded bg-ink-800 text-ink-400 border border-ink-700">
+        Soon
+      </span>
+    )}
+  </div>
+
+  <p class="text-sm text-ink-300 leading-relaxed flex-1">
+    {product.tagline}
+  </p>
+
+  <div class="mt-5 pt-4 border-t border-ink-800/80 flex items-center justify-between">
+    <span class="text-sm font-semibold text-amber-400">{product.pricing}</span>
+    <span class="inline-flex items-center gap-1 text-xs font-medium text-ink-400 group-hover:text-amber-400 transition-colors">
+      Learn more
+      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </div>
+</a>

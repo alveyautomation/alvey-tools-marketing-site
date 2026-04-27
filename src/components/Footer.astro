@@ -1,0 +1,71 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-ink-800/80 bg-ink-950 mt-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+      <div class="col-span-2 md:col-span-1">
+        <div class="font-display text-xl text-ink-100 mb-2">Alvey Tools</div>
+        <p class="text-ink-400 leading-relaxed">
+          Operational tooling for indie devs and ecommerce operators, built from
+          running multi-million-dollar production automation.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-3">
+          Tools
+        </div>
+        <ul class="space-y-2 text-ink-300">
+          <li><a href={`${base}/`} class="hover:text-white">All tools</a></li>
+          <li><a href={`${base}/qbo-vendor-anomaly`} class="hover:text-white">QBO Vendor Anomaly</a></li>
+          <li><a href={`${base}/shopify-reorder`} class="hover:text-white">Shopify Reorder</a></li>
+          <li><a href={`${base}/stripe-failed-payment`} class="hover:text-white">Stripe Recovery</a></li>
+          <li><a href={`${base}/sellercloud-mcp`} class="hover:text-white">SellerCloud MCP</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-3">
+          Downloads
+        </div>
+        <ul class="space-y-2 text-ink-300">
+          <li><a href={`${base}/make-me-a-brett`} class="hover:text-white">Methodology Pack</a></li>
+          <li><a href={`${base}/security-stack`} class="hover:text-white">Security Stack</a></li>
+          <li><a href={`${base}/flask-scaffold`} class="hover:text-white">Flask Scaffold</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-3">
+          Company
+        </div>
+        <ul class="space-y-2 text-ink-300">
+          <li>
+            <a href="https://alveyautomation.com" class="hover:text-white"
+              >Alvey Automation</a
+            >
+          </li>
+          <li>
+            <a href="mailto:brett@alveyautomation.com" class="hover:text-white"
+              >brett@alveyautomation.com</a
+            >
+          </li>
+          <li><a href={`${base}/privacy`} class="hover:text-white">Privacy</a></li>
+          <li><a href={`${base}/terms`} class="hover:text-white">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-10 pt-6 border-t border-ink-800/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-ink-500"
+    >
+      <div>&copy; {year} Alvey Automation. All rights reserved.</div>
+      <div class="text-ink-500">
+        Built from running multi-million-dollar production automation.
+      </div>
+    </div>
+  </div>
+</footer>

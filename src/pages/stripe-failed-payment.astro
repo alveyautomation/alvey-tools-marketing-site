@@ -1,0 +1,138 @@
+---
+import ProductLayout from "../components/ProductLayout.astro";
+
+const faq = [
+  {
+    question: "Does this replace Stripe Smart Retries?",
+    answer:
+      "No, we layer on top. Smart Retries picks the time-of-day inside Stripe's network. We pick the day-of-cycle and own the customer-facing emails.",
+  },
+  {
+    question: "What happens on day 8?",
+    answer:
+      "We send the past-due notice and flip the subscription's metadata to alvey_dunning_status=past_due. We don't cancel — that's your call.",
+  },
+  {
+    question: "Can I customize the email copy?",
+    answer:
+      "Yes. Sender name, reply-to, logo, primary color, and full subject + body template per stage.",
+  },
+  {
+    question: "Is my Stripe data sent anywhere?",
+    answer:
+      "OAuth tokens are encrypted at rest with Fernet. Recovery state lives in our database. No data leaves the system except the customer-facing email body.",
+  },
+  {
+    question: "What if your service goes down on day 7?",
+    answer:
+      "Idempotent replay. When we come back up, day-7 fires once — not zero, not twice.",
+  },
+  {
+    question: "Can I customize the schedule?",
+    answer:
+      "Yes. Default is day 1 / 3 / 7 / 8, but you can configure any sequence per merchant.",
+  },
+];
+---
+
+<ProductLayout
+  metaTitle="Stripe Failed Payment Recovery — branded, idempotent dunning"
+  metaDescription="Automated dunning for Stripe Billing — branded retries on a schedule you control. Idempotent, audit-ready, $39/month flat per merchant."
+  eyebrow="Marketplace App · Stripe"
+  headline="Stop losing subscriptions to expired cards."
+  subhead="Branded, idempotent dunning for Stripe Billing on the schedule you control. Day 1 retry, day 3 firmer, day 7 final, day 8 past-due notice — all under your brand."
+  pricing="$39 / month flat · no per-recovery fee"
+  ctaLabel="Install on Stripe"
+  ctaHref="<Stripe Marketplace URL TBD>"
+  secondaryCtaLabel="Watch 60-second demo"
+  secondaryCtaHref="<Loom URL TBD>"
+  problemTitle="Most failed payments aren't churn"
+  whatYouGetTitle="What you get"
+  whoForTitle="Who this is for"
+  finalCtaTitle="Recover the revenue you've already earned."
+  finalCtaSubhead="One-click Stripe Connect install. First recovery the same day."
+  faq={faq}
+>
+  <Fragment slot="problem">
+    <p>
+      Most failed payments aren't churn — they're an expired card or a
+      temporary hold from the issuer. The customer wanted to pay you. The
+      card just didn't go through.
+    </p>
+    <p>
+      The fix is a four-step retry sequence with branded, polite, well-timed
+      emails. It's also the kind of thing that's annoying to build and even
+      more annoying to keep running correctly under deploys, retries, and
+      Stripe webhook replays.
+    </p>
+    <p>This app does it for you, idempotent by construction.</p>
+  </Fragment>
+
+  <Fragment slot="what-you-get">
+    <ul>
+      <li>
+        <strong>Stripe Connect OAuth</strong> — one-click install, no API
+        keys to handle.
+      </li>
+      <li>
+        <strong>Default 4-step dunning sequence</strong> — day 1 retry +
+        gentle email, day 3 retry + firmer, day 7 final attempt, day 8
+        past_due notice. Per-merchant schedule overrides.
+      </li>
+      <li>
+        <strong>Per-merchant email branding</strong> — logo, primary color,
+        sender name, reply-to address.
+      </li>
+      <li>
+        <strong>Custom email template overrides</strong> — full subject and
+        body per stage if you want it.
+      </li>
+      <li>
+        <strong>Idempotency-keyed retry ledger</strong> — append-only,
+        replay-safe. Replayed cron tick? No-op. Mid-cycle redeploy? Safe.
+      </li>
+      <li>
+        <strong>Audit log per recovery</strong> — every retry attempt logged
+        with timestamp, status, and the idempotency key that ran it.
+      </li>
+      <li>
+        <strong>Per-merchant kill switch</strong> — pause dunning for any
+        merchant in one click.
+      </li>
+      <li>
+        <strong>Subscription state tracking</strong> — active to past_due
+        transitions are mirrored locally, not just hoped about.
+      </li>
+      <li>
+        <strong>Webhook signature verification</strong> and token encryption
+        at rest with Fernet.
+      </li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="who-for">
+    <p>This app is for you if:</p>
+    <ul>
+      <li>
+        You run a SaaS or subscription business on Stripe Billing and lose
+        more subscriptions to failed payments than you'd like.
+      </li>
+      <li>
+        You want dunning emails customers see as coming from <em>your</em>
+        brand, not a third-party tool.
+      </li>
+      <li>
+        You care about idempotency and audit trails because your support team
+        gets blamed when a customer gets two emails on the same day.
+      </li>
+    </ul>
+    <p>It's not for you if:</p>
+    <ul>
+      <li>You're not on Stripe Billing.</li>
+      <li>
+        You want a full revenue-recovery suite with phone calls, win-backs,
+        and chat. We're focused on the email + retry layer specifically.
+      </li>
+    </ul>
+  </Fragment>
+</ProductLayout>

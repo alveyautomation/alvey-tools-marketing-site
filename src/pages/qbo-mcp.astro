@@ -1,0 +1,109 @@
+---
+import ProductLayout from "../components/ProductLayout.astro";
+
+const faq = [
+  {
+    question: "When is it shipping?",
+    answer:
+      "In flight as of late April 2026. Email brett@alveyautomation.com to be notified the day v0.1 is published.",
+  },
+  {
+    question: "What will it cover at v0.1?",
+    answer:
+      "Read-only access to the most-used QuickBooks Online endpoints: vendors, bills, customers, invoices, accounts, and the trial balance. Same shape as the SellerCloud and Walmart MCP servers — uniform JSON envelope, OAuth handled, MIT-licensed.",
+  },
+  {
+    question: "Will it write?",
+    answer:
+      "No. v0.1 is read-only by design, matching the rest of the MCP server family. Write operations on accounting data have a stricter threat model and may ship as a separate package later.",
+  },
+  {
+    question: "What auth does it use?",
+    answer:
+      "QuickBooks Online OAuth 2.0 (Intuit). You connect your books once, refresh tokens are stored locally and rotated automatically on near-expiry. No Alvey-hosted backend; your credentials never leave your machine.",
+  },
+  {
+    question: "How does this differ from QBO Vendor Anomaly?",
+    answer:
+      "QBO Vendor Anomaly is a hosted SaaS app that runs daily and alerts you in Slack — install once, no code. The QuickBooks MCP server is a developer tool that lets Claude (or any MCP client) ask ad-hoc questions of your books in real time. Different audiences, different surfaces.",
+  },
+  {
+    question: "Will there be a paid version?",
+    answer:
+      "The MCP server itself will be free / MIT, like the other MCP servers in this family. Hosted higher-level analyses (anomaly detection, cash-flow forecasting, etc.) live in their own paid marketplace apps.",
+  },
+];
+---
+
+<ProductLayout
+  metaTitle="QuickBooks MCP — coming soon"
+  metaDescription="A read-only Model Context Protocol server for QuickBooks Online. Vendors, bills, customers, invoices, accounts, trial balance. MIT-licensed, in flight."
+  eyebrow="MCP Server · QuickBooks Online"
+  headline="Plug Claude into your QuickBooks Online account."
+  subhead="Read-only MCP server for QuickBooks Online — vendors, bills, customers, invoices, accounts, and the trial balance. Currently in flight; email below to get notified at launch."
+  pricing="Free · MIT license"
+  ctaLabel="Notify me at launch"
+  ctaHref="mailto:brett@alveyautomation.com?subject=QuickBooks%20MCP%20availability"
+  problemTitle="What you'll be able to do"
+  whatYouGetTitle="Planned tool surface"
+  whoForTitle="Who this is for"
+  finalCtaTitle="Get notified at launch."
+  finalCtaSubhead="No newsletter, no marketing list — one email when v0.1 ships."
+  comingSoon={true}
+  faq={faq}
+>
+  <Fragment slot="problem">
+    <p>
+      Most accounting questions are slow because the answer is buried in
+      QuickBooks' UI under a report you have to remember to run. With a
+      read-only MCP server wired into Claude, you'll be able to ask things
+      like:
+    </p>
+    <ul>
+      <li>"Show me every vendor whose bill total this month is up vs last."</li>
+      <li>"Pull the open A/R aging into a markdown table."</li>
+      <li>"What's the trial balance delta between the last two months?"</li>
+      <li>"Find any invoices over $5,000 that have been outstanding more than 60 days."</li>
+    </ul>
+    <p>
+      No custom report. No spreadsheet export. Just a conversation.
+    </p>
+  </Fragment>
+
+  <Fragment slot="what-you-get">
+    <p>The v0.1 surface (subject to change as it lands):</p>
+    <ul>
+      <li><code>qbo_search_vendors</code> — by name, status, with paging</li>
+      <li><code>qbo_get_vendor</code> — full vendor detail by ID</li>
+      <li><code>qbo_search_bills</code> — date range, vendor, paid/unpaid filter</li>
+      <li><code>qbo_get_bill</code> — full bill with line items + account splits</li>
+      <li><code>qbo_search_customers</code> — by name, balance, status</li>
+      <li><code>qbo_search_invoices</code> — date range, customer, paid/open</li>
+      <li><code>qbo_list_accounts</code> — full chart of accounts</li>
+      <li><code>qbo_get_trial_balance</code> — for any date range</li>
+    </ul>
+    <p>
+      Same JSON envelope as the rest of the MCP server family. OAuth handled
+      via the proven scaffold from the methodology pack — auto-refresh on
+      expiry, encrypted tokens at rest, kill-switch endpoint.
+    </p>
+  </Fragment>
+
+  <Fragment slot="who-for">
+    <p>This MCP server is for you if:</p>
+    <ul>
+      <li>
+        You run QuickBooks Online and use Claude or another MCP-aware
+        AI client for daily work.
+      </li>
+      <li>
+        You'd rather ask "what's the A/R aging look like" than dig through
+        Reports → Customers & Receivables → A/R Aging Detail every time.
+      </li>
+      <li>
+        You're already a fan of the SellerCloud or Walmart MCP servers and
+        want the same shape for your books.
+      </li>
+    </ul>
+  </Fragment>
+</ProductLayout>

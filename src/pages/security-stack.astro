@@ -1,0 +1,156 @@
+---
+import ProductLayout from "../components/ProductLayout.astro";
+
+const faq = [
+  {
+    question: "I can find all of these tools for free, why pay $49?",
+    answer:
+      "You can. The cost is the 4-8 hours figuring out the right combination, allowlist patterns, custom detectors, and CI integration. If your time is worth less than $7-12/hour, definitely build it yourself. Otherwise this pays back the first time it blocks a credential commit.",
+  },
+  {
+    question: "Will it slow down my commits?",
+    answer:
+      "First commit after install: ~30-60s while tool binaries download. Subsequent commits: 1-3s for typical change sets. The trufflehog hook runs in --only-verified mode so it only does network calls when it finds a credential pattern that needs confirmation.",
+  },
+  {
+    question: "What if I get a false positive on a legitimate file?",
+    answer:
+      "Add a path or pattern to .gitleaks.toml [allowlist]. The included FALSE_POSITIVES.md walks through the most common cases (docker-compose dev passwords, test SSH keys, JWT seeds, base64 fixtures). Adding an allowlist entry takes ~30 seconds.",
+  },
+  {
+    question: "Does it work for Ruby or Go?",
+    answer:
+      "This release covers Python + Node.js (90% of indie dev market). Ruby (bundler-audit) and Go (govulncheck) workflows are planned for v2. Email if you need them sooner — happy to scope a v1.1 add-on.",
+  },
+  {
+    question: "What about secrets already in my history?",
+    answer:
+      "Pre-commit only catches future commits. For existing leaks, the EXAMPLES.md walks through the rotation playbook (rotate first, scrub history second — and history scrubbing is purely cosmetic once credentials are rotated).",
+  },
+  {
+    question: "Refund policy?",
+    answer:
+      "30-day no-questions-asked refund. Email and you'll have a refund within 24 hours.",
+  },
+];
+---
+
+<ProductLayout
+  metaTitle="Alvey Security Stack — pre-commit secret scanning that ships"
+  metaDescription="A pre-commit security stack that blocks AWS keys, Stripe secrets, OAuth tokens, and ~100 other credential patterns before they enter your git history. One install command. $49 one-time."
+  eyebrow="Download · Security Stack v1.0"
+  headline="Stop committing credentials. Forever."
+  subhead="A pre-commit security stack that blocks AWS keys, Stripe secrets, OAuth tokens, and ~100 other credential patterns before they enter your git history. One install command. Works on Python and Node.js."
+  pricing="$49 one-time · MIT license · 30-day refund"
+  ctaLabel="Buy on Gumroad"
+  ctaHref="<Gumroad URL TBD>"
+  problemTitle="The 4-hour problem this solves in 90 seconds"
+  whatYouGetTitle="What's in the bundle"
+  whoForTitle="Built for two real failure modes"
+  finalCtaTitle="Don't be the next 'I committed a key' Slack thread."
+  finalCtaSubhead="90-second install. Lifetime updates. MIT-licensed. 30-day refund."
+  faq={faq}
+>
+  <Fragment slot="problem">
+    <p>
+      Setting up production-grade pre-commit security from scratch takes most
+      developers a full afternoon:
+    </p>
+    <ul>
+      <li>
+        Pick between gitleaks, trufflehog, detect-secrets, semgrep — they
+        all catch different things.
+      </li>
+      <li>Wire pre-commit framework, version-pin every hook.</li>
+      <li>
+        Tune the gitleaks allowlist so docker-compose dev passwords and
+        lockfile hashes stop spamming you.
+      </li>
+      <li>
+        Add the Intuit/QBO patterns that gitleaks' default ruleset misses.
+      </li>
+      <li>Build CI workflows for daily dependency CVE scans.</li>
+      <li>Test it all on a sandbox repo with planted credentials.</li>
+    </ul>
+    <p>
+      <strong>This pack is the assembled, tuned, tested result.</strong>
+      <code>bash setup.sh</code> inside any repo, 90 seconds later you're
+      protected.
+    </p>
+  </Fragment>
+
+  <Fragment slot="what-you-get">
+    <ul>
+      <li>
+        <code>.pre-commit-config.yaml</code> — version-pinned, ordered, with
+        sensible defaults.
+      </li>
+      <li>
+        <code>.gitleaks.toml</code> — tuned ruleset with seven custom
+        detectors for Intuit/QBO, Anthropic, OpenAI, Discord webhooks,
+        Slack webhooks, Railway tokens, generic bearer tokens.
+      </li>
+      <li>
+        <code>.trufflehog.yaml</code> — path filters and
+        <code>--only-verified</code> mode for low-noise live-credential
+        detection.
+      </li>
+      <li>
+        <code>setup.sh</code> + <code>setup.ps1</code> — cross-platform
+        installer (Linux/macOS/WSL + Windows).
+      </li>
+      <li>
+        <strong>GitHub Actions templates</strong> — daily
+        <code>pip-audit</code> and <code>npm audit</code> cron workflows.
+      </li>
+      <li>
+        <strong>Hash-pinning template</strong> — the
+        <code>pip-compile --generate-hashes</code> workflow most devs skip.
+      </li>
+      <li>
+        <strong>EXAMPLES.md</strong> — five worked examples of catches, each
+        with the exact scan output and recommended fix.
+      </li>
+      <li>
+        <strong>FALSE_POSITIVES.md</strong> — pre-built allowlist for the
+        noise that bites every team.
+      </li>
+      <li>
+        <strong>MIT license</strong> — use it in commercial projects, fork
+        it, modify it.
+      </li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="who-for">
+    <h3>The accidental commit (95% of leaks)</h3>
+    <p>
+      You're racing to ship before a demo. You inline an API key "just to
+      test it locally," forget about it, and <code>git commit -am "fix"</code>.
+      The credential is now in your git history forever.
+    </p>
+    <p>
+      This pack rejects that commit before it lands on disk. You see a clear
+      error, fix the code, move on. No rotation, no panic, no Slack thread.
+    </p>
+
+    <h3>The dependency CVE that drops next week</h3>
+    <p>
+      Your <code>requirements.txt</code> was clean when you committed it.
+      Three days later, a critical CVE drops on a transitive dep. Without a
+      daily scheduled scan, you find out from a news headline.
+    </p>
+    <p>
+      The included GitHub Actions workflows run <code>pip-audit</code> /
+      <code>npm audit</code> every morning at 6 AM. New CVE in your locked
+      deps → failed build → Slack alert. Caught in 24 hours, not 24 days.
+    </p>
+
+    <p>
+      This pack is the <strong>opinionated assembly</strong> — every
+      individual tool is open-source and free. What you're paying for is the
+      4 hours of assembly + tuning + verification, replaced with a 90-second
+      install.
+    </p>
+  </Fragment>
+</ProductLayout>

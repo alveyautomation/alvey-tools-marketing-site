@@ -1,0 +1,147 @@
+---
+import ProductLayout from "../components/ProductLayout.astro";
+
+const faq = [
+  {
+    question: "Do you write to my store?",
+    answer:
+      "No. We use read-only Shopify scopes (read_products, read_inventory, read_orders). You can revoke us from Shopify Admin at any time.",
+  },
+  {
+    question: "How do you handle customer data?",
+    answer:
+      "We don't store it. We read order line items for velocity calculation and persist only the SKU-level aggregates. We never see customer names, addresses, or payment info.",
+  },
+  {
+    question: "What if I have multiple locations?",
+    answer:
+      "We sum on-hand across all locations to give you a network-wide view. Per-location reorder views are on the roadmap.",
+  },
+  {
+    question: "Can I override the math per SKU?",
+    answer:
+      "Yes. Each SKU has lead_time_days, safety_factor, and target_days_for_reorder that you can set in the dashboard. Overseas SKUs typically run 60-90 day cover; domestic might be 14-30.",
+  },
+  {
+    question: "What about inbound purchase orders?",
+    answer:
+      "Shopify's REST API doesn't surface inbound PO quantities natively. You can either post your PO data to our API endpoint to feed real on-order numbers, or leave it at zero (default) — we'll alert slightly earlier as a result.",
+  },
+  {
+    question: "Where does the Slack digest go?",
+    answer:
+      "You configure a Slack webhook URL during onboarding. The digest goes only there. We don't post to your store, your customers, or anywhere else.",
+  },
+];
+---
+
+<ProductLayout
+  metaTitle="Shopify Reorder Point Alerts — daily Slack digest"
+  metaDescription="A Shopify app that emails you every morning with the SKUs to reorder, the quantity, and how soon — based on real 30-day sales velocity and inbound POs. $19/month, 14-day free trial."
+  eyebrow="Marketplace App · Shopify"
+  headline="Stop running out of best-sellers."
+  subhead="A daily Slack digest of which Shopify SKUs to reorder, ranked by urgency. 30-day velocity, reorder qty, time-to-stockout — accounting for what you already have on order."
+  pricing="$19 / month · 14-day free trial"
+  ctaLabel="Install on Shopify"
+  ctaHref="<Shopify App Store URL TBD>"
+  secondaryCtaLabel="Watch 90-second demo"
+  secondaryCtaHref="<Loom URL TBD>"
+  problemTitle="Most low-stock apps tell you you’re already out"
+  whatYouGetTitle="What's in the digest"
+  whoForTitle="Who this is for"
+  finalCtaTitle="Stop guessing what to reorder."
+  finalCtaSubhead="Tomorrow morning at 6 AM you'll know what to order before lunch."
+  faq={faq}
+>
+  <Fragment slot="problem">
+    <p>
+      That's too late. Reorder Point Alerts tells you "you'll be out in 8 days
+      unless you order today." It accounts for:
+    </p>
+    <ul>
+      <li>
+        <strong>Your real demand</strong>, not catalog averages — every SKU
+        has its own 30-day rolling velocity.
+      </li>
+      <li>
+        <strong>Your incoming purchase orders</strong>, not just on-hand
+        stock — when you have 4 on hand and 26 inbound, time-to-stockout is
+        30 days, not 4.
+      </li>
+      <li>
+        <strong>Your supplier reality</strong> — set per-SKU
+        target_days_for_reorder to 90 for overseas suppliers without
+        inflating ordering everywhere else.
+      </li>
+      <li>
+        <strong>The slow-movers you forget about</strong> — zero-velocity
+        SKUs are excluded automatically, so the digest stays scannable.
+      </li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="what-you-get">
+    <p>
+      Every morning at 6 AM your time, a Slack digest grouped into three
+      buckets:
+    </p>
+    <ul>
+      <li>
+        <strong>ORDER TODAY</strong> — SKUs with under 7 days of cover even
+        accounting for inbound stock. Critical.
+      </li>
+      <li>
+        <strong>ORDER THIS WEEK</strong> — SKUs with 7-14 days of cover.
+        Action this week.
+      </li>
+      <li>
+        <strong>PLAN AHEAD</strong> — SKUs with 14-30 days of cover. Get the
+        PO drafted, no panic.
+      </li>
+    </ul>
+    <p>
+      Each row shows: SKU, on-hand, on-order, recommended reorder qty (based
+      on 30 days of velocity), and days to stockout. One scroll on your phone
+      and you know what to do.
+    </p>
+    <p>You also get:</p>
+    <ul>
+      <li>
+        Per-SKU dashboard with override controls for lead time, safety
+        factor, and target reorder window.
+      </li>
+      <li>
+        An audit trail of every recommendation — useful for buying
+        retrospectives.
+      </li>
+      <li>Optional inbound-PO feed via simple POST endpoint.</li>
+      <li>Per-merchant kill switch — pause the digest in one click.</li>
+    </ul>
+  </Fragment>
+
+  <Fragment slot="who-for">
+    <p>This app is for you if:</p>
+    <ul>
+      <li>
+        You run a Shopify store with at least a few dozen SKUs that you
+        actively manage.
+      </li>
+      <li>
+        You've ever stocked out on a best-seller and watched the conversion
+        rate crater for two weeks while you waited on the next container.
+      </li>
+      <li>
+        You want a per-SKU view that respects your real lead times — not a
+        "you're out" alert that fires after the damage is done.
+      </li>
+    </ul>
+    <p>It's not for you if:</p>
+    <ul>
+      <li>
+        You sell mostly made-to-order or one-of-a-kind items where reorder
+        quantity isn't a meaningful concept.
+      </li>
+      <li>You're already on a full-stack inventory ERP that handles this.</li>
+    </ul>
+  </Fragment>
+</ProductLayout>

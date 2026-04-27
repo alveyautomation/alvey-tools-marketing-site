@@ -1,0 +1,68 @@
+---
+import BuyButton from "./BuyButton.astro";
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  subhead: string;
+  pricing: string;
+  ctaLabel: string;
+  ctaHref: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  comingSoon?: boolean;
+}
+
+const {
+  eyebrow,
+  headline,
+  subhead,
+  pricing,
+  ctaLabel,
+  ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+  comingSoon = false,
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-amber-500/5 via-transparent to-transparent pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 sm:pt-24 sm:pb-16 text-center">
+    <div class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400 mb-4 flex items-center justify-center gap-2">
+      <span>{eyebrow}</span>
+      {comingSoon && (
+        <span class="text-[10px] px-2 py-0.5 rounded bg-ink-800 text-ink-400 border border-ink-700 normal-case tracking-normal">
+          Coming soon
+        </span>
+      )}
+    </div>
+
+    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-ink-100 leading-[1.05] mb-6">
+      {headline}
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-lg sm:text-xl text-ink-300 leading-relaxed mb-3">
+      {subhead}
+    </p>
+
+    <div class="text-amber-400 font-semibold mb-8">{pricing}</div>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <BuyButton href={ctaHref} label={ctaLabel} size="lg" />
+      {secondaryCtaLabel && secondaryCtaHref && (
+        <BuyButton
+          href={secondaryCtaHref}
+          label={secondaryCtaLabel}
+          variant="secondary"
+          size="lg"
+        />
+      )}
+    </div>
+  </div>
+</section>

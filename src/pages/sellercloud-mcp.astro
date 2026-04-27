@@ -1,0 +1,121 @@
+---
+import ProductLayout from "../components/ProductLayout.astro";
+
+const faq = [
+  {
+    question: "Is this an official SellerCloud product?",
+    answer:
+      "No. This is an independent open-source project, not endorsed by SellerCloud, Inc. It uses SellerCloud's public REST API with credentials you provide.",
+  },
+  {
+    question: "Does it write to my SellerCloud account?",
+    answer:
+      "No. v0.1 is read-only. The seven tools cover product search, inventory, orders, channels, and listings — none of them mutate state. Write tools are intentionally out of scope until threat model and customer demand justify them.",
+  },
+  {
+    question: "What MCP clients does it work with?",
+    answer:
+      "Anything that speaks the Model Context Protocol over stdio: Claude Code (CLI), Claude Desktop, Cursor's MCP integration, and any IDE plugin that supports MCP servers.",
+  },
+  {
+    question: "Where do my credentials live?",
+    answer:
+      "Locally, in a .env file you create. The MCP server reads them at startup and never logs or persists them. There is no Alvey-hosted backend — your credentials never leave your machine.",
+  },
+  {
+    question: "How do I install it?",
+    answer:
+      "pip install from GitHub, then add it to your MCP client's config with three env vars (SellerCloud username, password, and base URL). The README has copy-paste-ready snippets for Claude Code and Claude Desktop.",
+  },
+  {
+    question: "Will there be more tools?",
+    answer:
+      "v0.2 candidates include warehouse transfers, purchase orders, and reserve adjustments. Open an issue if there's an endpoint you need.",
+  },
+];
+---
+
+<ProductLayout
+  metaTitle="SellerCloud MCP — read-only Claude integration for SellerCloud"
+  metaDescription="A Model Context Protocol server for SellerCloud. Plug Claude into your catalog, inventory, orders, and channel listings — read-only, MIT-licensed, in five minutes."
+  eyebrow="MCP Server · SellerCloud"
+  headline="Plug Claude into your SellerCloud account."
+  subhead="The first Model Context Protocol server for SellerCloud. Catalog, inventory, orders, channels, and channel listings — read-only, in five minutes."
+  pricing="Free · MIT license"
+  ctaLabel="Get on GitHub"
+  ctaHref="<GitHub URL TBD>"
+  secondaryCtaLabel="5-min install demo"
+  secondaryCtaHref="<Loom URL TBD>"
+  problemTitle="There's no public SellerCloud SDK"
+  whatYouGetTitle="The seven read-only tools"
+  whoForTitle="Who this is for"
+  finalCtaTitle="Talk to your SellerCloud account in plain English."
+  finalCtaSubhead="Five-minute install. MIT-licensed. No telemetry, no hosted backend."
+  faq={faq}
+>
+  <Fragment slot="problem">
+    <p>
+      Every team running on SellerCloud writes the same glue code: an HTTP
+      client, auth handling, pagination, retry-on-401 token refresh, and a
+      handful of helpers wrapped around the REST endpoints they actually use.
+      Then they wire that glue into Claude or whatever AI tool they're using
+      so they can ask questions of it from a chat window.
+    </p>
+    <p>
+      This package is the assembled, tested version. It exposes seven
+      read-only SellerCloud endpoints as MCP tools so your AI client can call
+      them directly — no glue code, no boilerplate, no maintained-by-one-person
+      internal package.
+    </p>
+  </Fragment>
+
+  <Fragment slot="what-you-get">
+    <ul>
+      <li><code>sellercloud_search_products</code> — query, paginate, filter</li>
+      <li><code>sellercloud_get_product</code> — full product detail by SKU</li>
+      <li><code>sellercloud_search_orders</code> — date range, status, query</li>
+      <li><code>sellercloud_get_order</code> — full order with line items</li>
+      <li><code>sellercloud_get_inventory</code> — qty on hand by warehouse</li>
+      <li><code>sellercloud_list_channels</code> — channel registry</li>
+      <li><code>sellercloud_get_channel_listing</code> — per-channel listing detail</li>
+    </ul>
+    <p>
+      Every tool returns a uniform JSON envelope:
+      <code>{`{ "ok": bool, "data": ..., "error": ... }`}</code> — so your
+      MCP client gets a predictable contract. Pagination and 401-refresh are
+      handled transparently. Retries are clamped on 5xx and connection
+      errors. 44 unit tests cover the auth, retry, and tool-layer behavior.
+    </p>
+    <p>
+      Distributed as <code>pip install</code> from GitHub at v0.1. PyPI
+      release once it has soaked.
+    </p>
+  </Fragment>
+
+  <Fragment slot="who-for">
+    <p>This MCP server is for you if:</p>
+    <ul>
+      <li>
+        You run an ecommerce operation on SellerCloud and use Claude (or any
+        MCP-aware AI client) for ad-hoc questions about your catalog,
+        orders, and inventory.
+      </li>
+      <li>
+        You're tired of writing the same glue every time and would rather
+        configure once and never think about it again.
+      </li>
+      <li>
+        You want a read-only first integration so you can prove value before
+        widening scope.
+      </li>
+    </ul>
+    <p>It's not for you if:</p>
+    <ul>
+      <li>You don't use SellerCloud.</li>
+      <li>
+        You need write operations — those are intentionally out of scope at
+        v0.1.
+      </li>
+    </ul>
+  </Fragment>
+</ProductLayout>
