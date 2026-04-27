@@ -2,6 +2,9 @@
 import Default from "../layouts/Default.astro";
 import ProductCard from "../components/ProductCard.astro";
 import BuyButton from "../components/BuyButton.astro";
+import ComparisonTable from "../components/ComparisonTable.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FAQSection from "../components/FAQSection.astro";
 import {
   products,
   productsByCategory,
@@ -10,6 +13,49 @@ import {
 } from "../data/products";
 
 const liveCount = products.filter((p) => p.status !== "coming-soon").length;
+
+const homeFaq = [
+  {
+    question: "What is an MCP server?",
+    answer:
+      "MCP stands for Model Context Protocol. It is an open spec for letting AI clients (Claude Code, Claude Desktop, Cursor, and others) call tools on a server over stdio or HTTP. An MCP server exposes a small set of typed functions, the AI client picks the right one for the question, and you get a structured answer back. The Alvey MCP servers wrap platforms like SellerCloud, Walmart, Etsy, and QuickBooks so you can ask questions of those systems in plain English.",
+  },
+  {
+    question: "Is the data secure? What credentials does the server access?",
+    answer:
+      "Every MCP server in this catalog runs locally on your machine. There is no Alvey-hosted backend, no telemetry, and no phone-home. Credentials live in a .env file you create, are read at startup, and are never logged or transmitted. v0.1 servers are read-only by design, so even a misuse cannot mutate your data. OAuth tokens are encrypted at rest and rotated on near-expiry.",
+  },
+  {
+    question: "Does this work with Claude Code, Claude Desktop, or both?",
+    answer:
+      "Both, plus any other MCP-aware client. The servers speak standard MCP over stdio, so they work with Claude Code (CLI), Claude Desktop, Cursor's MCP integration, and any IDE plugin that supports MCP. Each repo's README ships copy-paste config blocks for Claude Code and Claude Desktop.",
+  },
+  {
+    question: "What if my platform isn't covered yet?",
+    answer:
+      "Email brett@alveyautomation.com with the platform name and a couple of the questions you would want to ask. The MCP server family is intentionally small and opinionated, so new entries go in only when there is a real use case. If your platform has a public API and a clear read-only surface, it is a candidate.",
+  },
+  {
+    question: "How are the paid downloads different from the free MCP servers?",
+    answer:
+      "The MCP servers are runtime tools: install once, plug Claude into your platform, ask questions. The downloads are body-of-work artifacts: a 92-page methodology pack, a Flask SaaS scaffold, an OAuth generator CLI, a pre-commit security stack. They teach the patterns the MCP servers are built on, so you can apply them to your own systems. Different surfaces, different audiences.",
+  },
+  {
+    question: "What's the refund policy?",
+    answer:
+      "If a paid download does not deliver, for any reason, email brett@alveyautomation.com within 14 days of purchase for a full refund. No friction, no ticket forms, no support runaround. The MCP servers and marketplace apps have their own per-product terms; see each product page for specifics.",
+  },
+  {
+    question: "What's the v0.2 roadmap?",
+    answer:
+      "Across the MCP server family, v0.2 candidates include warehouse transfers, purchase orders, and reserve adjustments for SellerCloud; cash-flow forecasting and trial-balance comparison helpers for QuickBooks; and listing-management surfaces for Etsy and Walmart. The marketplace apps add tighter integrations with the MCP servers so an alert can drop you into a follow-up conversation. Open a GitHub issue or email Brett to influence the order.",
+  },
+  {
+    question: "How do I contact support?",
+    answer:
+      "brett@alveyautomation.com goes straight to Brett. Most replies are same-day, all replies within 48 hours. For MCP server bugs, opening a GitHub issue is faster because it shows up in the repo's notification stream. There is no ticket portal, no support tier, no offshore queue.",
+  },
+];
 ---
 
 <Default
@@ -110,6 +156,12 @@ const liveCount = products.filter((p) => p.status !== "coming-soon").length;
       })
     }
   </section>
+
+  <ComparisonTable />
+
+  <Testimonials />
+
+  <FAQSection items={homeFaq} eyebrow="Common Questions" />
 
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
     <h2 class="font-display text-3xl sm:text-4xl text-ink-100 mb-5">

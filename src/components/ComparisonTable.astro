@@ -1,0 +1,145 @@
+---
+// Comparison table: "With Alvey Tools" vs "Roll your own". The grid layout
+// stacks vertically on small screens and switches to a 3-column row at sm:,
+// so it stays legible at 375px iPhone SE width.
+interface Row {
+  label: string;
+  alvey: string;
+  diy: string;
+}
+
+const rows: Row[] = [
+  {
+    label: "Setup time",
+    alvey: "5 minutes",
+    diy: "1 to 2 weeks",
+  },
+  {
+    label: "OAuth refresh handling",
+    alvey: "Handled, auto-rotation on near-expiry",
+    diy: "Manual, easy to get wrong on edge cases",
+  },
+  {
+    label: "Pagination",
+    alvey: "Handled, transparent across endpoints",
+    diy: "Manual, per-endpoint cursor logic",
+  },
+  {
+    label: "Retry and 429 backoff",
+    alvey: "Handled, clamped on 5xx and rate limits",
+    diy: "Manual, often skipped until production breaks",
+  },
+  {
+    label: "Documentation",
+    alvey: "Production-grade, covers the gotchas",
+    diy: "Tribal knowledge, lives in one engineer's head",
+  },
+  {
+    label: "Updates as APIs change",
+    alvey: "Maintained, versioned releases",
+    diy: "Your job, on your timeline",
+  },
+  {
+    label: "Cost",
+    alvey: "Free, MIT-licensed",
+    diy: "Your dev hours",
+  },
+];
+---
+
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+  <div class="mb-10 text-center">
+    <div
+      class="text-xs font-semibold uppercase tracking-[0.25em] text-amber-400 mb-3"
+    >
+      The Tradeoff
+    </div>
+    <h2 class="font-display text-3xl sm:text-4xl text-ink-100 mb-3">
+      vs building from scratch
+    </h2>
+    <p class="text-ink-400 text-sm sm:text-base max-w-2xl mx-auto">
+      Every team eventually writes the same glue. These are the parts the
+      MCP servers and downloads handle for you, vs the parts you would own
+      if you rolled your own.
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-ink-800 bg-ink-900/60 overflow-hidden">
+    <div
+      class="hidden sm:grid sm:grid-cols-[1.1fr_1fr_1fr] border-b border-ink-800 bg-ink-950/50"
+    >
+      <div class="p-4 text-xs uppercase tracking-wider text-ink-400 font-semibold">
+        Capability
+      </div>
+      <div class="p-4 text-xs uppercase tracking-wider text-amber-400 font-semibold">
+        With Alvey Tools
+      </div>
+      <div class="p-4 text-xs uppercase tracking-wider text-ink-400 font-semibold">
+        Roll your own
+      </div>
+    </div>
+
+    {
+      rows.map((row, i) => (
+        <div
+          class={`grid grid-cols-1 sm:grid-cols-[1.1fr_1fr_1fr] gap-px ${
+            i < rows.length - 1 ? "border-b border-ink-800" : ""
+          }`}
+        >
+          <div class="p-4 sm:p-5 sm:border-r sm:border-ink-800/80">
+            <div class="text-[10px] uppercase tracking-wider text-ink-500 font-semibold mb-1 sm:hidden">
+              Capability
+            </div>
+            <div class="text-ink-100 font-semibold text-sm sm:text-base">
+              {row.label}
+            </div>
+          </div>
+          <div class="p-4 sm:p-5 sm:border-r sm:border-ink-800/80 bg-ink-900/30 sm:bg-transparent">
+            <div class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold mb-1 sm:hidden">
+              With Alvey Tools
+            </div>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 shrink-0 mt-0.5 text-amber-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-ink-200 text-sm sm:text-base leading-relaxed">
+                {row.alvey}
+              </span>
+            </div>
+          </div>
+          <div class="p-4 sm:p-5">
+            <div class="text-[10px] uppercase tracking-wider text-ink-500 font-semibold mb-1 sm:hidden">
+              Roll your own
+            </div>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 shrink-0 mt-0.5 text-ink-600"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-ink-400 text-sm sm:text-base leading-relaxed">
+                {row.diy}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
