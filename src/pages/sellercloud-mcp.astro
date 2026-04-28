@@ -10,7 +10,7 @@ const faq = [
   {
     question: "Does it write to my SellerCloud account?",
     answer:
-      "No. v0.1 is read-only. The seven tools cover product search, inventory, orders, channels, and listings — none of them mutate state. Write tools are intentionally out of scope until threat model and customer demand justify them.",
+      "No. v0.1 is read-only. The seven tools cover product search, inventory, orders, channels, and listings, none of them mutate state. Write tools are intentionally out of scope until threat model and customer demand justify them.",
   },
   {
     question: "What MCP clients does it work with?",
@@ -20,7 +20,7 @@ const faq = [
   {
     question: "Where do my credentials live?",
     answer:
-      "Locally, in a .env file you create. The MCP server reads them at startup and never logs or persists them. There is no Alvey-hosted backend — your credentials never leave your machine.",
+      "Locally, in a .env file you create. The MCP server reads them at startup and never logs or persists them. There is no Alvey-hosted backend, your credentials never leave your machine.",
   },
   {
     question: "How do I install it?",
@@ -36,11 +36,11 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="SellerCloud MCP — read-only Claude integration for SellerCloud"
-  metaDescription="A Model Context Protocol server for SellerCloud. Plug Claude into your catalog, inventory, orders, and channel listings — read-only, MIT-licensed, in five minutes."
+  metaTitle="SellerCloud MCP: read-only Claude integration for SellerCloud"
+  metaDescription="A Model Context Protocol server for SellerCloud. Plug Claude into your catalog, inventory, orders, and channel listings: read-only, MIT-licensed, in five minutes."
   eyebrow="MCP Server · SellerCloud"
   headline="Plug Claude into your SellerCloud account."
-  subhead="The first Model Context Protocol server for SellerCloud. Catalog, inventory, orders, channels, and channel listings — read-only, in five minutes."
+  subhead="The first Model Context Protocol server for SellerCloud. Catalog, inventory, orders, channels, and channel listings: read-only, in five minutes."
   pricing="Free · MIT license"
   ctaLabel="Get on GitHub"
   ctaHref="<GitHub URL TBD>"
@@ -64,24 +64,24 @@ const faq = [
     <p>
       This package is the assembled, tested version. It exposes seven
       read-only SellerCloud endpoints as MCP tools so your AI client can call
-      them directly — no glue code, no boilerplate, no maintained-by-one-person
+      them directly, no glue code, no boilerplate, no maintained-by-one-person
       internal package.
     </p>
   </Fragment>
 
   <Fragment slot="what-you-get">
     <ul>
-      <li><code>sellercloud_search_products</code> — query, paginate, filter</li>
-      <li><code>sellercloud_get_product</code> — full product detail by SKU</li>
-      <li><code>sellercloud_search_orders</code> — date range, status, query</li>
-      <li><code>sellercloud_get_order</code> — full order with line items</li>
-      <li><code>sellercloud_get_inventory</code> — qty on hand by warehouse</li>
-      <li><code>sellercloud_list_channels</code> — channel registry</li>
-      <li><code>sellercloud_get_channel_listing</code> — per-channel listing detail</li>
+      <li><code>sellercloud_search_products</code>, query, paginate, filter</li>
+      <li><code>sellercloud_get_product</code>, full product detail by SKU</li>
+      <li><code>sellercloud_search_orders</code>, date range, status, query</li>
+      <li><code>sellercloud_get_order</code>, full order with line items</li>
+      <li><code>sellercloud_get_inventory</code>, qty on hand by warehouse</li>
+      <li><code>sellercloud_list_channels</code>, channel registry</li>
+      <li><code>sellercloud_get_channel_listing</code>, per-channel listing detail</li>
     </ul>
     <p>
       Every tool returns a uniform JSON envelope:
-      <code>{`{ "ok": bool, "data": ..., "error": ... }`}</code> — so your
+      <code>{`{ "ok": bool, "data": ..., "error": ... }`}</code>, so your
       MCP client gets a predictable contract. Pagination and 401-refresh are
       handled transparently. Retries are clamped on 5xx and connection
       errors. 44 unit tests cover the auth, retry, and tool-layer behavior.
@@ -113,7 +113,7 @@ const faq = [
     <ul>
       <li>You don't use SellerCloud.</li>
       <li>
-        You need write operations — those are intentionally out of scope at
+        You need write operations, those are intentionally out of scope at
         v0.1.
       </li>
     </ul>

@@ -5,7 +5,7 @@ const faq = [
   {
     question: "Is this an official Polymarket project?",
     answer:
-      "No. This is an independent open-source project. It calls Polymarket's public Gamma and CLOB APIs — no auth required, no wallet involvement at v0.1.",
+      "No. This is an independent open-source project. It calls Polymarket's public Gamma and CLOB APIs, no auth required, no wallet involvement at v0.1.",
   },
   {
     question: "Does it trade?",
@@ -30,17 +30,17 @@ const faq = [
   {
     question: "Can I use this for trading research?",
     answer:
-      "Yes — that's the primary use case. Search markets, pull order books, fetch price history at multiple intervals, list categories, find volume leaders. Pair it with Claude for ad-hoc analysis.",
+      "Yes, that's the primary use case. Search markets, pull order books, fetch price history at multiple intervals, list categories, find volume leaders. Pair it with Claude for ad-hoc analysis.",
   },
 ];
 ---
 
 <ProductLayout
-  metaTitle="Polymarket MCP — read-only Claude integration for Polymarket"
-  metaDescription="A read-only Model Context Protocol server for Polymarket's Gamma and CLOB APIs. Markets, orderbooks, price history, resolutions — MIT-licensed, no auth required."
+  metaTitle="Polymarket MCP: read-only Claude integration for Polymarket"
+  metaDescription="A read-only Model Context Protocol server for Polymarket's Gamma and CLOB APIs. Markets, orderbooks, price history, resolutions: MIT-licensed, no auth required."
   eyebrow="MCP Server · Polymarket"
   headline="Plug Claude into Polymarket's public APIs."
-  subhead="Read-only MCP server for Polymarket's public Gamma and CLOB APIs. Markets, orderbooks, price history, categories, volume leaders, resolutions — no auth required."
+  subhead="Read-only MCP server for Polymarket's public Gamma and CLOB APIs. Markets, orderbooks, price history, categories, volume leaders, resolutions: no auth required."
   pricing="Free · MIT license"
   ctaLabel="Get on GitHub"
   ctaHref="<GitHub URL TBD>"
@@ -55,7 +55,7 @@ const faq = [
 >
   <Fragment slot="problem">
     <p>
-      Polymarket exposes a rich public API across two surfaces — Gamma for
+      Polymarket exposes a rich public API across two surfaces. Gamma for
       market discovery, CLOB for order books and price history. The endpoints
       are clean. The only thing standing between you and "ask Claude about
       this market" is a few hundred lines of glue.
@@ -71,35 +71,35 @@ const faq = [
   <Fragment slot="what-you-get">
     <ul>
       <li>
-        <code>polymarket_search_markets</code> — substring match across
+        <code>polymarket_search_markets</code>, substring match across
         question, slug, description
       </li>
       <li>
-        <code>polymarket_get_market</code> — by numeric ID or slug
+        <code>polymarket_get_market</code>, by numeric ID or slug
       </li>
       <li>
-        <code>polymarket_get_orderbook</code> — live order book for any CTF
+        <code>polymarket_get_orderbook</code>, live order book for any CTF
         outcome token
       </li>
       <li>
-        <code>polymarket_get_price_history</code> — 1m / 5m / 15m / 1h / 6h / 1d
+        <code>polymarket_get_price_history</code>. 1m / 5m / 15m / 1h / 6h / 1d
         intervals
       </li>
       <li>
-        <code>polymarket_list_categories</code> — full tag list
+        <code>polymarket_list_categories</code>, full tag list
       </li>
       <li>
-        <code>polymarket_get_volume_leaders</code> — top markets by 24-hour
+        <code>polymarket_get_volume_leaders</code>, top markets by 24-hour
         volume, optionally scoped by category
       </li>
       <li>
-        <code>polymarket_get_market_resolutions</code> — closed markets,
+        <code>polymarket_get_market_resolutions</code>, closed markets,
         client-side filtered by date window
       </li>
     </ul>
     <p>
       All seven tools registered, all returning the standard JSON envelope.
-      Runtime deps are <code>mcp + requests</code> only — <code>py-clob-client</code> is wired
+      Runtime deps are <code>mcp + requests</code> only, <code>py-clob-client</code> is wired
       under an optional <code>[trading]</code> extra for teams that want to
       build a wallet-authenticated trading layer on top.
     </p>

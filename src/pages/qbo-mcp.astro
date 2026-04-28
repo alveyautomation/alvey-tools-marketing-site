@@ -10,7 +10,7 @@ const faq = [
   {
     question: "What will it cover at v0.1?",
     answer:
-      "Read-only access to the most-used QuickBooks Online endpoints: vendors, bills, customers, invoices, accounts, and the trial balance. Same shape as the SellerCloud and Walmart MCP servers — uniform JSON envelope, OAuth handled, MIT-licensed.",
+      "Read-only access to the most-used QuickBooks Online endpoints: vendors, bills, customers, invoices, accounts, and the trial balance. Same shape as the SellerCloud and Walmart MCP servers, uniform JSON envelope, OAuth handled, MIT-licensed.",
   },
   {
     question: "Will it write?",
@@ -25,7 +25,7 @@ const faq = [
   {
     question: "How does this differ from QBO Vendor Anomaly?",
     answer:
-      "QBO Vendor Anomaly is a hosted SaaS app that runs daily and alerts you in Slack — install once, no code. The QuickBooks MCP server is a developer tool that lets Claude (or any MCP client) ask ad-hoc questions of your books in real time. Different audiences, different surfaces.",
+      "QBO Vendor Anomaly is a hosted SaaS app that runs daily and alerts you in Slack, install once, no code. The QuickBooks MCP server is a developer tool that lets Claude (or any MCP client) ask ad-hoc questions of your books in real time. Different audiences, different surfaces.",
   },
   {
     question: "Will there be a paid version?",
@@ -36,11 +36,11 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="QuickBooks MCP — coming soon"
+  metaTitle="QuickBooks MCP: coming soon"
   metaDescription="A read-only Model Context Protocol server for QuickBooks Online. Vendors, bills, customers, invoices, accounts, trial balance. MIT-licensed, in flight."
   eyebrow="MCP Server · QuickBooks Online"
   headline="Plug Claude into your QuickBooks Online account."
-  subhead="Read-only MCP server for QuickBooks Online — vendors, bills, customers, invoices, accounts, and the trial balance. Currently in flight; email below to get notified at launch."
+  subhead="Read-only MCP server for QuickBooks Online: vendors, bills, customers, invoices, accounts, and the trial balance. Currently in flight; email below to get notified at launch."
   pricing="Free · MIT license"
   ctaLabel="Notify me at launch"
   ctaHref="mailto:brett@alveyautomation.com?subject=QuickBooks%20MCP%20availability"
@@ -48,7 +48,7 @@ const faq = [
   whatYouGetTitle="Planned tool surface"
   whoForTitle="Who this is for"
   finalCtaTitle="Get notified at launch."
-  finalCtaSubhead="No newsletter, no marketing list — one email when v0.1 ships."
+  finalCtaSubhead="No newsletter, no marketing list: one email when v0.1 ships."
   comingSoon={true}
   faq={faq}
 >
@@ -73,18 +73,18 @@ const faq = [
   <Fragment slot="what-you-get">
     <p>The v0.1 surface (subject to change as it lands):</p>
     <ul>
-      <li><code>qbo_search_vendors</code> — by name, status, with paging</li>
-      <li><code>qbo_get_vendor</code> — full vendor detail by ID</li>
-      <li><code>qbo_search_bills</code> — date range, vendor, paid/unpaid filter</li>
-      <li><code>qbo_get_bill</code> — full bill with line items + account splits</li>
-      <li><code>qbo_search_customers</code> — by name, balance, status</li>
-      <li><code>qbo_search_invoices</code> — date range, customer, paid/open</li>
-      <li><code>qbo_list_accounts</code> — full chart of accounts</li>
-      <li><code>qbo_get_trial_balance</code> — for any date range</li>
+      <li><code>qbo_search_vendors</code>, by name, status, with paging</li>
+      <li><code>qbo_get_vendor</code>, full vendor detail by ID</li>
+      <li><code>qbo_search_bills</code>, date range, vendor, paid/unpaid filter</li>
+      <li><code>qbo_get_bill</code>, full bill with line items + account splits</li>
+      <li><code>qbo_search_customers</code>, by name, balance, status</li>
+      <li><code>qbo_search_invoices</code>, date range, customer, paid/open</li>
+      <li><code>qbo_list_accounts</code>, full chart of accounts</li>
+      <li><code>qbo_get_trial_balance</code>, for any date range</li>
     </ul>
     <p>
       Same JSON envelope as the rest of the MCP server family. OAuth handled
-      via the proven scaffold from the methodology pack — auto-refresh on
+      via the proven scaffold from the methodology pack, auto-refresh on
       expiry, encrypted tokens at rest, kill-switch endpoint.
     </p>
   </Fragment>

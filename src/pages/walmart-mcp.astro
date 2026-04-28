@@ -10,17 +10,17 @@ const faq = [
   {
     question: "Does it write to my Walmart Marketplace account?",
     answer:
-      "No. v0.1 is read-only. Catalog, inventory, orders, pricing, and settlement reports — none of them mutate state.",
+      "No. v0.1 is read-only. Catalog, inventory, orders, pricing, and settlement reports, none of them mutate state.",
   },
   {
     question: "What's the auth story?",
     answer:
-      "Walmart Marketplace uses an RSA-signed-request scheme. The package handles signing transparently — you provide your Consumer ID and PEM private key as env vars, and the client attaches the right WM_SEC.AUTH_SIGNATURE headers per request. Keys never leave memory; nothing is logged or persisted.",
+      "Walmart Marketplace uses an RSA-signed-request scheme. The package handles signing transparently, you provide your Consumer ID and PEM private key as env vars, and the client attaches the right WM_SEC.AUTH_SIGNATURE headers per request. Keys never leave memory; nothing is logged or persisted.",
   },
   {
     question: "What about 401 errors?",
     answer:
-      "Almost always clock skew. Walmart's signature scheme is timestamp-sensitive — make sure your machine's clock is synced via NTP. The README has a troubleshooting section covering this and four other common failure modes.",
+      "Almost always clock skew. Walmart's signature scheme is timestamp-sensitive, make sure your machine's clock is synced via NTP. The README has a troubleshooting section covering this and four other common failure modes.",
   },
   {
     question: "What MCP clients does it work with?",
@@ -30,17 +30,17 @@ const faq = [
   {
     question: "What's next?",
     answer:
-      "v0.2 candidates include feeds (catalog updates, price updates, inventory updates) — but those are write operations and require a different threat model. Open an issue if there's a read endpoint you need first.",
+      "v0.2 candidates include feeds (catalog updates, price updates, inventory updates), but those are write operations and require a different threat model. Open an issue if there's a read endpoint you need first.",
   },
 ];
 ---
 
 <ProductLayout
-  metaTitle="Walmart MCP — read-only Claude integration for Walmart Marketplace"
-  metaDescription="A Model Context Protocol server for Walmart Marketplace. Catalog, inventory, orders, pricing, and settlement reports — read-only, MIT-licensed, in five minutes."
+  metaTitle="Walmart MCP: read-only Claude integration for Walmart Marketplace"
+  metaDescription="A Model Context Protocol server for Walmart Marketplace. Catalog, inventory, orders, pricing, and settlement reports: read-only, MIT-licensed, in five minutes."
   eyebrow="MCP Server · Walmart Marketplace"
   headline="Plug Claude into your Walmart Marketplace account."
-  subhead="A Model Context Protocol server for Walmart Marketplace. Catalog, inventory, orders, pricing, and settlement reports — read-only, in five minutes."
+  subhead="A Model Context Protocol server for Walmart Marketplace. Catalog, inventory, orders, pricing, and settlement reports: read-only, in five minutes."
   pricing="Free · MIT license"
   ctaLabel="Get on GitHub"
   ctaHref="<GitHub URL TBD>"
@@ -56,7 +56,7 @@ const faq = [
   <Fragment slot="problem">
     <p>
       Every team selling on Walmart Marketplace writes the same RSA-signing
-      glue — load PEM, build canonical string, sign, base64, attach four
+      glue, load PEM, build canonical string, sign, base64, attach four
       headers, generate a fresh correlation ID, time it to epoch ms, retry on
       5xx, paginate. None of it is hard. All of it is annoying.
     </p>
@@ -70,19 +70,19 @@ const faq = [
 
   <Fragment slot="what-you-get">
     <ul>
-      <li><code>walmart_search_products</code> — by query, page, page_size</li>
-      <li><code>walmart_get_product</code> — full item detail by SKU</li>
-      <li><code>walmart_search_orders</code> — date range, status filter</li>
-      <li><code>walmart_get_order</code> — full purchase order detail</li>
-      <li><code>walmart_get_inventory</code> — qty on hand by SKU</li>
-      <li><code>walmart_get_pricing</code> — current price + strikethrough</li>
-      <li><code>walmart_get_settlement_report</code> — fetch by report id</li>
+      <li><code>walmart_search_products</code>, by query, page, page_size</li>
+      <li><code>walmart_get_product</code>, full item detail by SKU</li>
+      <li><code>walmart_search_orders</code>, date range, status filter</li>
+      <li><code>walmart_get_order</code>, full purchase order detail</li>
+      <li><code>walmart_get_inventory</code>, qty on hand by SKU</li>
+      <li><code>walmart_get_pricing</code>, current price + strikethrough</li>
+      <li><code>walmart_get_settlement_report</code>, fetch by report id</li>
     </ul>
     <p>
       Every tool returns the standard JSON envelope. Auth signing uses
       RSA-2048 with SHA-256 (PKCS#1 v1.5 padding) per Walmart's public docs.
       Cryptography is handled by the audited <code>cryptography</code>
-      library — the only added runtime dep over <code>mcp + requests</code>.
+      library, the only added runtime dep over <code>mcp + requests</code>.
       61 unit tests cover signature verification, retry behavior, and the
       tool layer.
     </p>

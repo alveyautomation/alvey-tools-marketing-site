@@ -10,7 +10,7 @@ const faq = [
   {
     question: "What happens on day 8?",
     answer:
-      "We send the past-due notice and flip the subscription's metadata to alvey_dunning_status=past_due. We don't cancel — that's your call.",
+      "We send the past-due notice and flip the subscription's metadata to alvey_dunning_status=past_due. We don't cancel, that's your call.",
   },
   {
     question: "Can I customize the email copy?",
@@ -25,7 +25,7 @@ const faq = [
   {
     question: "What if your service goes down on day 7?",
     answer:
-      "Idempotent replay. When we come back up, day-7 fires once — not zero, not twice.",
+      "Idempotent replay. When we come back up, day-7 fires once, not zero, not twice.",
   },
   {
     question: "Can I customize the schedule?",
@@ -36,11 +36,11 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="Stripe Failed Payment Recovery — branded, idempotent dunning"
-  metaDescription="Automated dunning for Stripe Billing — branded retries on a schedule you control. Idempotent, audit-ready, $39/month flat per merchant."
+  metaTitle="Stripe Failed Payment Recovery: branded, idempotent dunning"
+  metaDescription="Automated dunning for Stripe Billing: branded retries on a schedule you control. Idempotent, audit-ready, $39/month flat per merchant."
   eyebrow="Marketplace App · Stripe"
   headline="Stop losing subscriptions to expired cards."
-  subhead="Branded, idempotent dunning for Stripe Billing on the schedule you control. Day 1 retry, day 3 firmer, day 7 final, day 8 past-due notice — all under your brand."
+  subhead="Branded, idempotent dunning for Stripe Billing on the schedule you control. Day 1 retry, day 3 firmer, day 7 final, day 8 past-due notice: all under your brand."
   pricing="$39 / month flat · no per-recovery fee"
   ctaLabel="Install on Stripe"
   ctaHref="<Stripe Marketplace URL TBD>"
@@ -55,7 +55,7 @@ const faq = [
 >
   <Fragment slot="problem">
     <p>
-      Most failed payments aren't churn — they're an expired card or a
+      Most failed payments aren't churn, they're an expired card or a
       temporary hold from the issuer. The customer wanted to pay you. The
       card just didn't go through.
     </p>
@@ -71,36 +71,36 @@ const faq = [
   <Fragment slot="what-you-get">
     <ul>
       <li>
-        <strong>Stripe Connect OAuth</strong> — one-click install, no API
+        <strong>Stripe Connect OAuth</strong>, one-click install, no API
         keys to handle.
       </li>
       <li>
-        <strong>Default 4-step dunning sequence</strong> — day 1 retry +
+        <strong>Default 4-step dunning sequence</strong>, day 1 retry +
         gentle email, day 3 retry + firmer, day 7 final attempt, day 8
         past_due notice. Per-merchant schedule overrides.
       </li>
       <li>
-        <strong>Per-merchant email branding</strong> — logo, primary color,
+        <strong>Per-merchant email branding</strong>, logo, primary color,
         sender name, reply-to address.
       </li>
       <li>
-        <strong>Custom email template overrides</strong> — full subject and
+        <strong>Custom email template overrides</strong>, full subject and
         body per stage if you want it.
       </li>
       <li>
-        <strong>Idempotency-keyed retry ledger</strong> — append-only,
+        <strong>Idempotency-keyed retry ledger</strong>, append-only,
         replay-safe. Replayed cron tick? No-op. Mid-cycle redeploy? Safe.
       </li>
       <li>
-        <strong>Audit log per recovery</strong> — every retry attempt logged
+        <strong>Audit log per recovery</strong>, every retry attempt logged
         with timestamp, status, and the idempotency key that ran it.
       </li>
       <li>
-        <strong>Per-merchant kill switch</strong> — pause dunning for any
+        <strong>Per-merchant kill switch</strong>, pause dunning for any
         merchant in one click.
       </li>
       <li>
-        <strong>Subscription state tracking</strong> — active to past_due
+        <strong>Subscription state tracking</strong>, active to past_due
         transitions are mirrored locally, not just hoped about.
       </li>
       <li>

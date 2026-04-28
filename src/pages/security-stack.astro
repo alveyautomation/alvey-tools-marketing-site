@@ -20,12 +20,12 @@ const faq = [
   {
     question: "Does it work for Ruby or Go?",
     answer:
-      "This release covers Python + Node.js (90% of indie dev market). Ruby (bundler-audit) and Go (govulncheck) workflows are planned for v2. Email if you need them sooner — happy to scope a v1.1 add-on.",
+      "This release covers Python + Node.js (90% of indie dev market). Ruby (bundler-audit) and Go (govulncheck) workflows are planned for v2. Email if you need them sooner, happy to scope a v1.1 add-on.",
   },
   {
     question: "What about secrets already in my history?",
     answer:
-      "Pre-commit only catches future commits. For existing leaks, the EXAMPLES.md walks through the rotation playbook (rotate first, scrub history second — and history scrubbing is purely cosmetic once credentials are rotated).",
+      "Pre-commit only catches future commits. For existing leaks, the EXAMPLES.md walks through the rotation playbook (rotate first, scrub history second, and history scrubbing is purely cosmetic once credentials are rotated).",
   },
   {
     question: "Refund policy?",
@@ -36,7 +36,7 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="Alvey Security Stack — pre-commit secret scanning that ships"
+  metaTitle="Alvey Security Stack: pre-commit secret scanning that ships"
   metaDescription="A pre-commit security stack that blocks AWS keys, Stripe secrets, OAuth tokens, and ~100 other credential patterns before they enter your git history. One install command. $49 one-time."
   eyebrow="Download · Security Stack v1.0"
   headline="Stop committing credentials. Forever."
@@ -58,7 +58,7 @@ const faq = [
     </p>
     <ul>
       <li>
-        Pick between gitleaks, trufflehog, detect-secrets, semgrep — they
+        Pick between gitleaks, trufflehog, detect-secrets, semgrep, they
         all catch different things.
       </li>
       <li>Wire pre-commit framework, version-pin every hook.</li>
@@ -82,41 +82,41 @@ const faq = [
   <Fragment slot="what-you-get">
     <ul>
       <li>
-        <code>.pre-commit-config.yaml</code> — version-pinned, ordered, with
+        <code>.pre-commit-config.yaml</code>, version-pinned, ordered, with
         sensible defaults.
       </li>
       <li>
-        <code>.gitleaks.toml</code> — tuned ruleset with seven custom
+        <code>.gitleaks.toml</code>, tuned ruleset with seven custom
         detectors for Intuit/QBO, Anthropic, OpenAI, Discord webhooks,
         Slack webhooks, Railway tokens, generic bearer tokens.
       </li>
       <li>
-        <code>.trufflehog.yaml</code> — path filters and
+        <code>.trufflehog.yaml</code>, path filters and
         <code>--only-verified</code> mode for low-noise live-credential
         detection.
       </li>
       <li>
-        <code>setup.sh</code> + <code>setup.ps1</code> — cross-platform
+        <code>setup.sh</code> + <code>setup.ps1</code>, cross-platform
         installer (Linux/macOS/WSL + Windows).
       </li>
       <li>
-        <strong>GitHub Actions templates</strong> — daily
+        <strong>GitHub Actions templates</strong>, daily
         <code>pip-audit</code> and <code>npm audit</code> cron workflows.
       </li>
       <li>
-        <strong>Hash-pinning template</strong> — the
+        <strong>Hash-pinning template</strong>, the
         <code>pip-compile --generate-hashes</code> workflow most devs skip.
       </li>
       <li>
-        <strong>EXAMPLES.md</strong> — five worked examples of catches, each
+        <strong>EXAMPLES.md</strong>, five worked examples of catches, each
         with the exact scan output and recommended fix.
       </li>
       <li>
-        <strong>FALSE_POSITIVES.md</strong> — pre-built allowlist for the
+        <strong>FALSE_POSITIVES.md</strong>, pre-built allowlist for the
         noise that bites every team.
       </li>
       <li>
-        <strong>MIT license</strong> — use it in commercial projects, fork
+        <strong>MIT license</strong>, use it in commercial projects, fork
         it, modify it.
       </li>
     </ul>
@@ -147,7 +147,7 @@ const faq = [
     </p>
 
     <p>
-      This pack is the <strong>opinionated assembly</strong> — every
+      This pack is the <strong>opinionated assembly</strong>, every
       individual tool is open-source and free. What you're paying for is the
       4 hours of assembly + tuning + verification, replaced with a 90-second
       install.
