@@ -12,6 +12,8 @@ interface FAQItem {
 interface Props {
   metaTitle: string;
   metaDescription: string;
+  ogTitle?: string;
+  ogImage?: string;
   eyebrow: string;
   headline: string;
   subhead: string;
@@ -32,6 +34,8 @@ interface Props {
 const {
   metaTitle,
   metaDescription,
+  ogTitle,
+  ogImage,
   eyebrow,
   headline,
   subhead,
@@ -50,7 +54,12 @@ const {
 } = Astro.props;
 ---
 
-<Default title={metaTitle} description={metaDescription}>
+<Default
+  title={metaTitle}
+  description={metaDescription}
+  ogTitle={ogTitle}
+  ogImage={ogImage}
+>
   <ProductHero
     eyebrow={eyebrow}
     headline={headline}

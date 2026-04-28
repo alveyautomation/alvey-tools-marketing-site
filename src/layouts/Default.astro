@@ -7,10 +7,25 @@ interface Props {
   title: string;
   description: string;
   ogTitle?: string;
+  ogImage?: string;
 }
 
-const { title, description, ogTitle } = Astro.props;
+const { title, description, ogTitle, ogImage } = Astro.props;
 const fullTitle = `${title} — Alvey Tools`;
+
+// Resolve og:image to an absolute URL. Defaults to /logo.png at the site root
+// until per-page custom OG images are added.
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "";
+const resolvedOgImage = ogImage
+  ? ogImage.startsWith("http")
+    ? ogImage
+    : `${siteUrl}${ogImage.startsWith("/") ? "" : "/"}${ogImage}`
+  : `${siteUrl}/logo.png`;
+
+// Canonical URL for the current page (helpful for og:url + crawlers).
+const canonicalUrl = Astro.url
+  ? `${siteUrl}${Astro.url.pathname.replace(/\/$/, "")}`
+  : siteUrl;
 ---
 
 <!DOCTYPE html>
@@ -21,14 +36,19 @@ const fullTitle = `${title} — Alvey Tools`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a1810" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:title" content={ogTitle ?? fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:site_name" content="Alvey Tools" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogTitle ?? fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
 
     <link
       rel="icon"
