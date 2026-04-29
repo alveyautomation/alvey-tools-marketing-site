@@ -25,7 +25,7 @@ const faq = [
   {
     question: "What about inbound purchase orders?",
     answer:
-      "Shopify's REST API doesn't surface inbound PO quantities natively. You can either post your PO data to our API endpoint to feed real on-order numbers, or leave it at zero (default) — we'll alert slightly earlier as a result.",
+      "Shopify's REST API doesn't surface inbound PO quantities natively. You can either post your PO data to our API endpoint to feed real on-order numbers, or leave it at zero (default), we'll alert slightly earlier as a result.",
   },
   {
     question: "Where does the Slack digest go?",
@@ -36,11 +36,12 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="Shopify Reorder Point Alerts — daily Slack digest"
-  metaDescription="A Shopify app that emails you every morning with the SKUs to reorder, the quantity, and how soon — based on real 30-day sales velocity and inbound POs. $19/month, 14-day free trial."
+  ogImage="/og/shopify-reorder.png"
+  metaTitle="Shopify Reorder Point Alerts: daily Slack digest"
+  metaDescription="A Shopify app that emails you every morning with the SKUs to reorder, the quantity, and how soon: based on real 30-day sales velocity and inbound POs. $19/month, 14-day free trial."
   eyebrow="Marketplace App · Shopify"
   headline="Stop running out of best-sellers."
-  subhead="A daily Slack digest of which Shopify SKUs to reorder, ranked by urgency. 30-day velocity, reorder qty, time-to-stockout — accounting for what you already have on order."
+  subhead="A daily Slack digest of which Shopify SKUs to reorder, ranked by urgency. 30-day velocity, reorder qty, time-to-stockout: accounting for what you already have on order."
   pricing="$19 / month · 14-day free trial"
   ctaLabel="Install on Shopify"
   ctaHref="<Shopify App Store URL TBD>"
@@ -60,21 +61,21 @@ const faq = [
     </p>
     <ul>
       <li>
-        <strong>Your real demand</strong>, not catalog averages — every SKU
+        <strong>Your real demand</strong>, not catalog averages, every SKU
         has its own 30-day rolling velocity.
       </li>
       <li>
         <strong>Your incoming purchase orders</strong>, not just on-hand
-        stock — when you have 4 on hand and 26 inbound, time-to-stockout is
+        stock, when you have 4 on hand and 26 inbound, time-to-stockout is
         30 days, not 4.
       </li>
       <li>
-        <strong>Your supplier reality</strong> — set per-SKU
+        <strong>Your supplier reality</strong>, set per-SKU
         target_days_for_reorder to 90 for overseas suppliers without
         inflating ordering everywhere else.
       </li>
       <li>
-        <strong>The slow-movers you forget about</strong> — zero-velocity
+        <strong>The slow-movers you forget about</strong>, zero-velocity
         SKUs are excluded automatically, so the digest stays scannable.
       </li>
     </ul>
@@ -87,15 +88,15 @@ const faq = [
     </p>
     <ul>
       <li>
-        <strong>ORDER TODAY</strong> — SKUs with under 7 days of cover even
+        <strong>ORDER TODAY</strong>. SKUs with under 7 days of cover even
         accounting for inbound stock. Critical.
       </li>
       <li>
-        <strong>ORDER THIS WEEK</strong> — SKUs with 7-14 days of cover.
+        <strong>ORDER THIS WEEK</strong>. SKUs with 7-14 days of cover.
         Action this week.
       </li>
       <li>
-        <strong>PLAN AHEAD</strong> — SKUs with 14-30 days of cover. Get the
+        <strong>PLAN AHEAD</strong>. SKUs with 14-30 days of cover. Get the
         PO drafted, no panic.
       </li>
     </ul>
@@ -111,11 +112,11 @@ const faq = [
         factor, and target reorder window.
       </li>
       <li>
-        An audit trail of every recommendation — useful for buying
+        An audit trail of every recommendation, useful for buying
         retrospectives.
       </li>
       <li>Optional inbound-PO feed via simple POST endpoint.</li>
-      <li>Per-merchant kill switch — pause the digest in one click.</li>
+      <li>Per-merchant kill switch, pause the digest in one click.</li>
     </ul>
   </Fragment>
 
@@ -131,7 +132,7 @@ const faq = [
         rate crater for two weeks while you waited on the next container.
       </li>
       <li>
-        You want a per-SKU view that respects your real lead times — not a
+        You want a per-SKU view that respects your real lead times, not a
         "you're out" alert that fires after the damage is done.
       </li>
     </ul>

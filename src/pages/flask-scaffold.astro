@@ -10,7 +10,7 @@ const faq = [
   {
     question: "Can I rebrand it freely?",
     answer:
-      "Yes — MIT license. There's a RENAMING.md walkthrough that covers renaming the demo Project entity, swapping the favicon, customizing colors, and a pre-launch checklist.",
+      "Yes. MIT license. There's a RENAMING.md walkthrough that covers renaming the demo Project entity, swapping the favicon, customizing colors, and a pre-launch checklist.",
   },
   {
     question: "Does it include OAuth / Google sign-in?",
@@ -20,27 +20,28 @@ const faq = [
   {
     question: "Will my buyers be able to use this?",
     answer:
-      "This is a developer tool, not an end-user product. You build your SaaS on top of it. Your customers never see this scaffold — they see whatever you ship.",
+      "This is a developer tool, not an end-user product. You build your SaaS on top of it. Your customers never see this scaffold, they see whatever you ship.",
   },
   {
     question: "Can I get a refund?",
     answer:
-      "Yes — 7-day no-questions refund. Email and you'll get it.",
+      "Yes. 7-day no-questions refund. Email and you'll get it.",
   },
   {
     question: "Is multi-tenancy actually enforced?",
     answer:
-      "Yes, and the test suite proves it. There are 7 tests confirming for_tenant() scoping, plus HTTP-level tests where one tenant logs in and tries to GET / PATCH / DELETE another tenant's resource by ID — every attempt returns 404 and the target row is unchanged.",
+      "Yes, and the test suite proves it. There are 7 tests confirming for_tenant() scoping, plus HTTP-level tests where one tenant logs in and tries to GET / PATCH / DELETE another tenant's resource by ID, every attempt returns 404 and the target row is unchanged.",
   },
 ];
 ---
 
 <ProductLayout
-  metaTitle="Flask SaaS Scaffold — multi-tenant, billing, idempotent webhooks"
+  ogImage="/og/flask-scaffold.png"
+  metaTitle="Flask SaaS Scaffold: multi-tenant, billing, idempotent webhooks"
   metaDescription="A production-tested multi-tenant Flask scaffold with enforced query scoping, Stripe billing, idempotent webhooks, super-admin dashboard, and 28 passing tests. $79 one-time, MIT-licensed."
   eyebrow="Download · Flask Scaffold v1.0"
   headline="Build SaaS faster on a multi-tenant Flask foundation that's actually correct."
-  subhead="A production-tested scaffold for indie SaaS founders. Signup, billing, multi-tenant data isolation, admin dashboard — wired up and ready to ship."
+  subhead="A production-tested scaffold for indie SaaS founders. Signup, billing, multi-tenant data isolation, admin dashboard: wired up and ready to ship."
   pricing="$79 one-time · MIT license · 7-day refund"
   ctaLabel="Buy on Gumroad"
   ctaHref="<Gumroad URL TBD>"
@@ -54,7 +55,7 @@ const faq = [
   <Fragment slot="problem">
     <p>
       Most multi-tenant Flask tutorials get the data model wrong. They tell
-      you to "add a <code>tenant_id</code> column" and call it done — without
+      you to "add a <code>tenant_id</code> column" and call it done, without
       ever showing you the patterns that prevent cross-tenant data leaks at
       scale.
     </p>
@@ -74,7 +75,7 @@ const faq = [
       </li>
       <li>
         <strong>A clearly named escape hatch</strong>
-        (<code>all_tenants_unsafe()</code>) for super-admin views — so code
+        (<code>all_tenants_unsafe()</code>) for super-admin views, so code
         review can flag every cross-tenant query.
       </li>
       <li>
@@ -88,7 +89,7 @@ const faq = [
       </li>
       <li>
         <strong>Tests that prove the multi-tenancy guarantee.</strong> Not
-        "looks correct" — actually log in as one tenant and verify HTTP 404
+        "looks correct", actually log in as one tenant and verify HTTP 404
         when querying another tenant's resource by ID.
       </li>
     </ul>
@@ -97,8 +98,7 @@ const faq = [
   <Fragment slot="what-you-get">
     <ul>
       <li>
-        <strong>Multi-tenant data model</strong> with enforced query scoping —
-        tenant A literally cannot see tenant B's data, verified by tests.
+        <strong>Multi-tenant data model</strong> with enforced query scoping,         tenant A literally cannot see tenant B's data, verified by tests.
       </li>
       <li>
         <strong>Email + password signup / login</strong> with bcrypt.
@@ -112,20 +112,20 @@ const faq = [
         management.
       </li>
       <li>
-        <strong>Super-admin dashboard</strong> for support overrides — cancel,
+        <strong>Super-admin dashboard</strong> for support overrides, cancel,
         reinstate, comp customers onto Pro.
       </li>
       <li>
         <strong>JSON API + server-rendered UI</strong> with Tailwind. No
         build step in dev.
       </li>
-      <li><strong>Alembic migrations</strong> — schema versioning works.</li>
+      <li><strong>Alembic migrations</strong>, schema versioning works.</li>
       <li>
-        <strong>Postgres in production, SQLite for local dev</strong> — zero
+        <strong>Postgres in production, SQLite for local dev</strong>, zero
         setup.
       </li>
       <li>
-        <strong>Procfile + railway.toml + Dockerfile</strong> — deploy in
+        <strong>Procfile + railway.toml + Dockerfile</strong>, deploy in
         one push.
       </li>
       <li>
@@ -159,12 +159,11 @@ const faq = [
     <p>This scaffold is NOT for you if:</p>
     <ul>
       <li>
-        You need OAuth-only auth, magic-link auth, or SSO out of the box —
-        the scaffold is bcrypt + sessions; layer your own on top.
+        You need OAuth-only auth, magic-link auth, or SSO out of the box,         the scaffold is bcrypt + sessions; layer your own on top.
       </li>
       <li>You're already on Django (you have your own conventions).</li>
       <li>
-        You're expecting a no-code admin like Forest or Retool — this is a
+        You're expecting a no-code admin like Forest or Retool, this is a
         Flask blueprint, not a CMS.
       </li>
     </ul>

@@ -5,7 +5,7 @@ const faq = [
   {
     question: "Why 3x and not 2x?",
     answer:
-      "Below 3x, normal vendor variance produces too many false positives. We've tuned this on synthetic data — 3x is the sweet spot where you get the actual surprises and almost no noise.",
+      "Below 3x, normal vendor variance produces too many false positives. We've tuned this on synthetic data. 3x is the sweet spot where you get the actual surprises and almost no noise.",
   },
   {
     question: "What about my biggest vendor where every bill is large?",
@@ -20,12 +20,12 @@ const faq = [
   {
     question: "What about brand-new vendors?",
     answer:
-      "We need at least 3 historical bills in the 90-day window before we start alerting on a vendor. Vendors with less data are silently skipped — no false alarms from a first-bill-ever being flagged as anomalous.",
+      "We need at least 3 historical bills in the 90-day window before we start alerting on a vendor. Vendors with less data are silently skipped, no false alarms from a first-bill-ever being flagged as anomalous.",
   },
   {
     question: "Is it really read-only?",
     answer:
-      "Yes. The OAuth scope we request permits write operations — but we never use them. You can verify in your QuickBooks audit log that no writes ever occurred.",
+      "Yes. The OAuth scope we request permits write operations, but we never use them. You can verify in your QuickBooks audit log that no writes ever occurred.",
   },
   {
     question: "What happens if I cancel?",
@@ -36,11 +36,12 @@ const faq = [
 ---
 
 <ProductLayout
-  metaTitle="QBO Vendor Anomaly — daily 3x-median bill alerts"
+  ogImage="/og/qbo-vendor-anomaly.png"
+  metaTitle="QBO Vendor Anomaly: daily 3x-median bill alerts"
   metaDescription="Daily QuickBooks scan that catches duplicate bills, unit-price typos, stealth subscription renewals, and vendor billing scams before you pay them. $29/month."
   eyebrow="Marketplace App · QuickBooks Online"
   headline="Catch the wrong vendor bill before you pay it."
-  subhead="Daily scan of your QuickBooks vendor bills. One Slack alert when a bill is at least 3x its 90-day median — duplicate, typo, stealth renewal, or fraud."
+  subhead="Daily scan of your QuickBooks vendor bills. One Slack alert when a bill is at least 3x its 90-day median: duplicate, typo, stealth renewal, or fraud."
   pricing="$29 / month · 14-day free trial"
   ctaLabel="Install on QuickBooks"
   ctaHref="<QuickBooks App Store URL TBD>"
@@ -76,28 +77,28 @@ const faq = [
   <Fragment slot="what-you-get">
     <ul>
       <li>
-        <strong>Duplicate bills</strong> — same invoice entered twice, or a
+        <strong>Duplicate bills</strong>, same invoice entered twice, or a
         legitimate invoice that snuck through both your AP queue and an
         auto-import.
       </li>
       <li>
-        <strong>Unit-price typos</strong> — $1,200 keyed as $12,000, or a
+        <strong>Unit-price typos</strong>, $1,200 keyed as $12,000, or a
         rate sheet imported with the wrong currency.
       </li>
       <li>
-        <strong>Stealth subscription renewals</strong> — the $99/mo SaaS that
+        <strong>Stealth subscription renewals</strong>, the $99/mo SaaS that
         jumps to $499/mo at renewal without an email warning.
       </li>
       <li>
-        <strong>Currency-conversion mistakes</strong> — EUR amounts imported
+        <strong>Currency-conversion mistakes</strong>. EUR amounts imported
         as USD values.
       </li>
       <li>
-        <strong>Vendor fraud and billing scams</strong> — fake invoice from a
+        <strong>Vendor fraud and billing scams</strong>, fake invoice from a
         spoofed vendor name with a real-looking amount.
       </li>
       <li>
-        <strong>Real legitimate price changes</strong> — you still want to
+        <strong>Real legitimate price changes</strong>, you still want to
         know about it.
       </li>
     </ul>
@@ -121,7 +122,7 @@ const faq = [
       </li>
       <li>
         You've ever caught (or missed and later caught) a duplicate bill, a
-        typo, or a stealth renewal — and want a quiet daily safety net.
+        typo, or a stealth renewal, and want a quiet daily safety net.
       </li>
     </ul>
     <p>It's not for you if:</p>

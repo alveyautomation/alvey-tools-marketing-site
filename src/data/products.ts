@@ -14,10 +14,10 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  // Downloads — live + buyable on Gumroad
+  // Downloads, live + buyable on Gumroad
   {
     slug: "make-me-a-brett",
-    name: "Make Me a Brett — Methodology Pack",
+    name: "Make Me a Brett. Methodology Pack",
     tagline:
       "A 92-page operational methodology and 28-file pattern library for shipping high-stakes automation that doesn't silently corrupt your business.",
     category: "Downloads",
@@ -64,7 +64,7 @@ export const products: Product[] = [
     slug: "cold-outreach-pack",
     name: "B2B Cold Outreach + Email Warmup Pack",
     tagline:
-      "A 90-page playbook plus 11 templates for converting cold inbox into paid services pipeline — without burning your domain.",
+      "A 90-page playbook plus 11 templates for converting cold inbox into paid services pipeline, without burning your domain.",
     category: "Downloads",
     pricing: "$99 one-time",
     ctaLabel: "Buy on Gumroad",
@@ -73,7 +73,7 @@ export const products: Product[] = [
     hasLandingPage: false,
   },
 
-  // MCP Servers — free, open-source, live on GitHub
+  // MCP Servers, free, open-source, live on GitHub
   {
     slug: "sellercloud-mcp",
     name: "SellerCloud MCP",
@@ -100,7 +100,7 @@ export const products: Product[] = [
     slug: "etsy-mcp",
     name: "Etsy MCP",
     tagline:
-      "Production-grade MCP server for Etsy. Listings, orders, variation inventory, shop stats — read-only, in five minutes.",
+      "Production-grade MCP server for Etsy. Listings, orders, variation inventory, shop stats, read-only, in five minutes.",
     category: "MCP Servers",
     pricing: "Free / MIT",
     ctaLabel: "View on GitHub",
@@ -112,7 +112,7 @@ export const products: Product[] = [
     slug: "qbo-mcp",
     name: "QuickBooks MCP",
     tagline:
-      "Read-only MCP server for QuickBooks Online — vendors, bills, customers, invoices, chart of accounts. Production-tested OAuth + retry handling.",
+      "Read-only MCP server for QuickBooks Online, vendors, bills, customers, invoices, chart of accounts. Production-tested OAuth + retry handling.",
     category: "MCP Servers",
     pricing: "Free / MIT",
     ctaLabel: "View on GitHub",
@@ -120,7 +120,7 @@ export const products: Product[] = [
     status: "live",
   },
 
-  // Marketplace Apps — built, awaiting marketplace approval
+  // Marketplace Apps, built, awaiting marketplace approval
   {
     slug: "qbo-vendor-anomaly",
     name: "QBO Vendor Anomaly Alerts",
@@ -164,11 +164,11 @@ export const categoryOrder: ProductCategory[] = [
 
 export const categoryDescriptions: Record<ProductCategory, string> = {
   Downloads:
-    "One-time downloads — methodology, scaffolds, and tooling distilled from running production at scale. Buy once, use forever.",
+    "One-time downloads, methodology, scaffolds, and tooling distilled from running production at scale. Buy once, use forever.",
   "MCP Servers":
     "Free, open-source Model Context Protocol servers. Plug Claude (and any MCP-aware client) into the platforms you already use.",
   "Marketplace Apps":
-    "Subscription apps installed from QuickBooks, Shopify, and Stripe marketplaces. Awaiting approval — leave your email and I'll notify you the day each one goes live.",
+    "Subscription apps installed from QuickBooks, Shopify, and Stripe marketplaces. Awaiting approval, leave your email and I'll notify you the day each one goes live.",
 };
 
 export function productBySlug(slug: string): Product | undefined {
