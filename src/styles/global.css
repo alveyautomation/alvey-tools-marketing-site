@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Forest greens (was navy "ink") */
-  --color-ink-950: #0a1810;
-  --color-ink-900: #0d2117;
-  --color-ink-800: #142a1f;
-  --color-ink-700: #1e3a2c;
-  --color-ink-600: #2d5a44;
-  --color-ink-500: #4a7c5d;
-  --color-ink-400: #7da890;
-  --color-ink-300: #b8c5bc;
-  --color-ink-200: #d8e0d6;
-  --color-ink-100: #f5f2ea;
+  /* Ink scale matching apex (alveyautomation.com) + websites pages
+     so all three properties render the same surface colors. */
+  --color-ink-50:  #fafbfa;
+  --color-ink-100: #f4f7f3;
+  --color-ink-200: #dfe5e0;
+  --color-ink-300: #cbd5cc;
+  --color-ink-400: #9aa9a0;
+  --color-ink-500: #6b7c72;
+  --color-ink-600: #465c52;
+  --color-ink-700: #2c3f37;
+  --color-ink-800: #15241d;
+  --color-ink-900: #0a1810;
+  --color-ink-950: #040c08;
 
-  /* Sandy white accents (was amber/orange) */
-  --color-amber-500: #d4c499;
-  --color-amber-400: #e8dec5;
-  --color-amber-300: #f5ecd9;
-  --color-orange-500: #d4c499;
+  /* Sand accent (apex calls these "sand"; aliased through "amber"
+     and "orange" classes for backwards compat with existing markup). */
+  --color-amber-500: #cbc1a3; /* sand dim */
+  --color-amber-400: #e8dec5; /* sand DEFAULT */
+  --color-amber-300: #f0e8d3; /* sand light */
+  --color-orange-500: #cbc1a3;
   --color-orange-400: #e8dec5;
 
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -31,7 +34,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-ink-950);
+  /* Match apex body bg (ink-900 = #0a1810). The old Tools palette
+     placed the page bg at ink-950, but the new aligned scale shifted
+     ink-950 deeper (#040c08), so the body now uses ink-900 to match
+     the other two properties. */
+  background-color: var(--color-ink-900);
   color: var(--color-ink-100);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
